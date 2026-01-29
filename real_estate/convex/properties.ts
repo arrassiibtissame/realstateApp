@@ -124,3 +124,10 @@ export const deleteProperty = mutation({
         await ctx.db.delete(args.id);
     }
 })
+// get featured properties
+export const getFeaturedProperties = query({
+    args: {},
+    handler: async (ctx) => {
+        return await ctx.db.query("properties").filter((q) => q.eq(q.field("featured"), true)).collect();
+    }
+})
