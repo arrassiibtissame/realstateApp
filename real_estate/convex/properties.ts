@@ -1,6 +1,6 @@
 // get all properties with optional filters 
 
-import { query } from "./_generated/server";
+import {mutation, query } from "./_generated/server";
 import { v } from "convex/values";
 
 export const getProperties = query({
@@ -45,4 +45,46 @@ export const getProperty = query({
     handler: async (ctx, args) => {
         return await ctx.db.get(args.id);
     }
-});   
+
+})  
+// create a new property 
+export const createProperty = mutation({
+    args: {
+        title: v.string(),
+        description: v.string(),
+        price: v.number(),
+        bedrooms: v.number(),
+        bathrooms: v.number(),
+        area: v.number(),
+        address: v.string(),
+        city: v.string(),
+        state: v.string(),
+        zipCode: v.string(),
+        propertyType: v.union(
+            v.literal("House"),
+            v.literal("Apartment"),
+            v.literal("Condo"),
+            v.literal("Townhouse")
+        ),
+        images: v.array(v.string()),
+        featured: v.optional(v.boolean()),
+    },
+    handler: async (ctx, args) => {
+        const propertyId = await ctx.db.insert("properties", {
+            title: args.title,
+            description: args.description,
+            price: args.price,           
+            bedrooms: args.bedrooms,
+            bathrooms: args.bathrooms,
+            area: args.area,
+            address: args.address,
+            city: args.city,
+            state: args.state,
+            zipCode: args.zipCode,
+            propertyType: args.propertyType,
+            images: args.images,
+            featured: args.featured,
+        });
+        return propertyId;
+    },
+});
