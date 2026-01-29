@@ -39,3 +39,10 @@ export const getProperties = query({
         return properties.sort((a, b) => b._creationTime - a._creationTime);
     },
 });
+// get property by id
+export const getProperty = query({  
+    args: { id: v.id("properties") },
+    handler: async (ctx, args) => {
+        return await ctx.db.get(args.id);
+    }
+});   
