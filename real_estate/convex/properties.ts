@@ -116,4 +116,11 @@ export const updateProperty = mutation({
         const {id, ...updates} = args;
         await ctx.db.patch(id, updates);
     },
-});
+})
+// delete a property
+export const deleteProperty = mutation({
+    args: { id: v.id("properties") },
+    handler: async (ctx, args) => {
+        await ctx.db.delete(args.id);
+    }
+})
