@@ -88,3 +88,32 @@ export const createProperty = mutation({
         return propertyId;
     },
 });
+
+// update a property
+export const updateProperty = mutation({
+    args: {
+        id: v.id("properties"),
+        title: v.string(),
+        description: v.string(),
+        price: v.number(),
+        bedrooms: v.number(),
+        bathrooms: v.number(),
+        area: v.number(),
+        address: v.string(),
+        city: v.string(),
+        state: v.string(),
+        zipCode: v.string(),
+        propertyType: v.union(
+            v.literal("House"),
+            v.literal("Apartment"),
+            v.literal("Condo"),
+            v.literal("Townhouse")
+        ),
+        images: v.array(v.string()),
+        featured: v.optional(v.boolean()),
+    },
+    handler: async (ctx, args) => {
+        const {id, ...updates} = args;
+        await ctx.db.patch(id, updates);
+    },
+});
