@@ -1,5 +1,4 @@
 "use client"
-import { Button } from '@/components/ui/button'
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import React from 'react'
@@ -47,7 +46,7 @@ function Navbar() {
         {!user ? (
 
             <SignInButton>
-                <Button>Get Started</Button>
+                <button className="bg-white hover:shadow-[0px_0px_30px_14px] shadow-[0px_0px_30px_7px] hover:shadow-white/50 shadow-white/50 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-100 transition duration-300">Get Started</button>
             </SignInButton>
 
         ):(
