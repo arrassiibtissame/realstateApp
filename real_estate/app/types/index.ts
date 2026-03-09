@@ -1,6 +1,6 @@
 import { Doc } from "@/convex/_generated/dataModel";
 
-export type Property  =  Doc["properties"];
+export type Property  =  Doc<"properties">;
 
 export type PropertyType ="house" | "apartment" | "condo" | "townhouse";
 

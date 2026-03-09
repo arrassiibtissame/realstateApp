@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button'
 import Image from 'next/image'
 import React from 'react'
 
@@ -23,7 +24,7 @@ function Hero() {
           We provide innovative solutions and premium services to help you achieve your goals and succeed in the world of Real Estate
          </p>
 
-         <button className='bg-[#e04141] px-6 py-3 rounded text-white font-semibold'> Get Started Now</button>
+         <Button className='bg-[#e04141]'> Get Started Now</Button>
       </div>
 
       </div>

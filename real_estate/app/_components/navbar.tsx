@@ -1,4 +1,5 @@
 "use client"
+import { Button } from '@/components/ui/button'
 import { SignInButton, UserButton, useUser } from '@clerk/nextjs'
 import Image from 'next/image'
 import React from 'react'
@@ -46,7 +47,7 @@ function Navbar() {
         {!user ? (
 
             <SignInButton>
-                <button className="bg-white hover:shadow-[0px_0px_30px_14px] shadow-[0px_0px_30px_7px] hover:shadow-white/50 shadow-white/50 text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-slate-100 transition duration-300">Get Started</button>
+                <Button>Get Started</Button>
             </SignInButton>
 
         ):(
@@ -55,8 +56,8 @@ function Navbar() {
        
     </div>
     <button id="menuToggle" className="md:hidden text-gray-600">
-        <svg className="w-6 h-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"
-            strokeLinecap="round" strokeLinejoin="round">
+        <svg className="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"
+            stroke-linecap="round" stroke-linejoin="round">
             <path d="M4 6h16M4 12h16M4 18h16" />
         </svg>
     </button>
